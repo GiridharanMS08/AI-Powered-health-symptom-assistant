@@ -1,2 +1,71 @@
 # AI-Powered-health-symptom-assistant
 A RAG-based medical question-answering system that uses FAISS for semantic retrieval, Sentence Transformers for embeddings, and Google Gemini for generating context-aware responses from a medical knowledge base.
+
+**Features**
+Build a vectorized knowledge base (PDF → text chunks → embeddings → FAISS).
+Retrieval of relevant sections from the knowledge base.
+RAG-style prompt assembly and LLM reasoning (Gemini / HuggingFace / local fallback).
+Streamlit UI for symptom input + PDF upload.
+Source page citation and transparent disclaimer.
+
+**PROJECT FOLDER**
+AI-Powered-health-symptom-assistant/
+│
+├── main.py
+├── create_vector_Fiass_db.py
+├── requirements.txt
+├── data/
+│   └── medical.pdf
+│ 
+└── medical_vectordb/ ======> this folder created automaticaly after executing create_vector_Fiass_db.py
+    ├── index.faiss
+    └── index.pkl
+**Files usages**
+create_vector_Fiass_db.py — extract PDF, chunk text, embed, create & save FAISS store.
+main.py — Streamlit app: loads vectorstore, retrieves docs, formats prompt, calls LLM, displays answer.
+medical_vectordb/ — (generated) FAISS vectorstore directory (created by create_knowledge_base.py).
+.env — (local, not tracked) holds GEMINI_API_KEY, .
+requirements.txt — suggested dependencies.
+
+**Follow the steps below to run **
+1.Clone the repository
+git clone <repo-url>
+cd <your-repo-folder>
+
+2. Create and Activate the Environment
+Using Conda:
+conda create -n env_name python=3.11
+conda activate env_name
+
+4. Install Dependencies
+pip install -r requirements.txt
+
+4. Configure the Gemini API Key
+Create a .env file in the project root:
+GEMINI_API_KEY=your_gemini_api_key
+
+6. Create the Knowledge Base
+Place the medical PDF in the project's data directory and run:
+
+python create_vector_Fiass_db.py
+This extracts the PDF content, creates embeddings using Sentence Transformers, and generates the local FAISS vector database.
+
+The resulting directory will be:
+medical_vectordb/
+
+6. Start the Streamlit Application
+
+Run:
+streamlit run diagnosis_assistant.py
+
+Streamlit will provide a local address such as:
+http://localhost:8501
+
+Open the address in a web browser to access the application.
+
+7. Use the Application
+Enter:
+Symptoms
+Duration of symptoms
+Severity — Low, Medium, or High
+Click Get Diagnosis to retrieve relevant information from the FAISS knowledge base and generate a response using Gemini.
