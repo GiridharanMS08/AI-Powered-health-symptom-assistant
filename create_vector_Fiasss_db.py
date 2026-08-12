@@ -49,7 +49,7 @@ def process_large_pdf(pdf_path):
     return medical_docs
 
 # Create and save knowledge base
-def create_knowledge_base(pdf_path=r"F:\AI-Diagnosis-Assistant\data\medical.pdf"):
+def create_knowledge_base(pdf_path=r"..\AI-health-Assistant\data\medical.pdf"):
     if not os.path.exists("medical_vectordb"):
         print("Creating knowledge base from meical PDF...")
         medical_docs = process_large_pdf(pdf_path)
@@ -67,7 +67,7 @@ def create_knowledge_base(pdf_path=r"F:\AI-Diagnosis-Assistant\data\medical.pdf"
         print("Knowledge base already exists at 'medical'.")
 
 if __name__ == "__main__":
-    pdf_path = r"F:\AI-Diagnosis-Assistant\data\medical.pdf"
+    pdf_path = r"...\AI-health-Assistant\data\medical.pdf"
     try:
         create_knowledge_base(pdf_path)
     except Exception as e:
