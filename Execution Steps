@@ -63,7 +63,5 @@ Open the address in a web browser to access the application.
 
 7. Use the Application
 Enter:
-Symptoms
-Duration of symptoms
-Severity — Low, Medium, or High
+Symptomss
 Click Get Diagnosis to retrieve relevant information from the FAISS knowledge base and generate a response using Gemini.
